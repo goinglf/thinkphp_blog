@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" href="/Public/Admin/style/css/ch-ui.admin.css">
+    <link rel="stylesheet" href="/Public/Admin/style/font/css/font-awesome.min.css">
+</head>
+<body>
+    <!--面包屑导航 开始-->
+    <div class="crumb_warp">
+        <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
+        <i class="fa fa-home"></i> <a href="#">首页</a> &raquo; <a href="#">商品管理</a> &raquo; 添加商品
+    </div>
+    <!--面包屑导航 结束-->
+
+	<!--结果页快捷搜索框 开始-->
+    <!--结果页快捷搜索框 结束-->
+
+    <!--搜索结果页面 列表 开始-->
+    <form action="#" method="post">
+        <div class="result_wrap">
+            <!--快捷导航 开始-->
+            <div class="result_content">
+                <div class="short_wrap">
+                    <a href="#"><i class="fa fa-plus"></i>新增文章</a>
+                    <a href="#"><i class="fa fa-recycle"></i>批量删除</a>
+                    <a href="/index.php/admin/category/cateList"><i class="fa fa-refresh"></i>更新排序</a>
+                </div>
+            </div>
+            <!--快捷导航 结束-->
+        </div>
+
+        <div class="result_wrap">
+            <div class="result_content">
+                <table class="list_tab">
+                    <tr>
+                        <th class="tc">排序</th>
+                        <th class="tc">ID</th>
+                        <th>分类名称</th>
+                        <th>分类标题</th>
+                        <th>查看次数</th>
+                        <th>操作</th>
+                    </tr>
+                    <foreach name="data" item="vo">
+
+                    <tr>
+                        <td class="tc">
+                            <input type="text" name="cate_order" value="{$vo.cate_order}" onchange="Category.changOrder(this,{$vo.cate_id})">
+                        </td>
+                        <td class="tc">{$vo.cate_id}</td>
+                        <td>
+                            <a href="#">{$vo.cate_name}</a>
+                        </td>
+                        <td>{$vo.cate_title}</td>
+                        <td>{$vo.cate_view}</td>
+                        <td>
+                            <a href="/index.php/admin/category/cateEdit?cate_id={$vo.cate_id}" >修改</a>
+                            <a  onclick="Category.del({$vo.cate_id})">删除</a>
+                        </td>
+                    </tr>
+                    <!--</volist>-->
+                    </foreach>
+                </table>
+
+
+<!--<div class="page_nav">-->
+<!--<div>-->
+<!--<a class="first" href="/wysls/index.php/Admin/Tag/index/p/1.html">第一页</a> -->
+<!--<a class="prev" href="/wysls/index.php/Admin/Tag/index/p/7.html">上一页</a> -->
+<!--<a class="num" href="/wysls/index.php/Admin/Tag/index/p/6.html">6</a>-->
+<!--<a class="num" href="/wysls/index.php/Admin/Tag/index/p/7.html">7</a>-->
+<!--<span class="current">8</span>-->
+<!--<a class="num" href="/wysls/index.php/Admin/Tag/index/p/9.html">9</a>-->
+<!--<a class="num" href="/wysls/index.php/Admin/Tag/index/p/10.html">10</a> -->
+<!--<a class="next" href="/wysls/index.php/Admin/Tag/index/p/9.html">下一页</a> -->
+<!--<a class="end" href="/wysls/index.php/Admin/Tag/index/p/11.html">最后一页</a> -->
+<!--<span class="rows">11 条记录</span>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+                <div class="page_list">
+                    <ul>
+
+                        <li class="active">{$page}</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--搜索结果页面 列表 结束-->
+
+
+
+</body>
+</html>
+<script type="text/javascript" src="/Public/Admin/style/js/jquery.js"></script>
+<script type="text/javascript" src="/Public/Admin/style/js/ch-ui.admin.js"></script>
+<script type="text/javascript" src="/Public/Common/dialog/layer.js"></script>
+<script type="text/javascript" src="/Public/Common/dialog/dialog.js"></script>
+<script type="text/javascript" src="/Public/Admin/style/js/Category.js"></script>
